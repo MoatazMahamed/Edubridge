@@ -1,6 +1,15 @@
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
+
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
+
   return (
     <header id="header">
       <nav className="navbar">
@@ -8,11 +17,15 @@ function Header() {
           Edubridge
         </a>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#courses">Product</a></li>
-            <li><a href="#reviews">Review</a></li>
-            <li><a href="#join-us">Contact</a></li>
+        <div className="menu-toggle" onClick={toggleMenu}>
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+
+        <ul className={isMenuOpen ? "active" : ""}>
+            <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
+            <li><a href="#courses" onClick={() => setIsMenuOpen(false)}>Product</a></li>
+            <li><a href="#reviews" onClick={() => setIsMenuOpen(false)}>Review</a></li>
+            <li><a href="#join-us" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
         </ul>
 
         <div className="account">

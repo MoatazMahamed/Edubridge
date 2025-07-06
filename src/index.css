@@ -81,6 +81,7 @@ p {
   height: 100px;
   margin: auto;
   padding: 0 2rem;
+  position: relative;
 }
 
 .navbar a {
@@ -91,6 +92,14 @@ p {
 .navbar .logo {
   font-size: 24px;
   font-weight: 600;
+}
+
+.navbar .menu-toggle {
+  display: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .navbar ul {
@@ -108,7 +117,6 @@ p {
 }
 
 .navbar .account .btn-join {
-  
   background-color: transparent;
   border: 1px solid var(--sky-blue);
   color: var(--sky-blue);
@@ -199,6 +207,34 @@ p {
   gap: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  #home {
+    padding: 3rem 0;
+  }
+
+  #home .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #home .home-header h1 {
+    font-size: 30px;
+  }
+
+  #home .home-header .btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #home .card-container {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+}
+
 #home .card-container .card {
   padding: 25px;
   background-color: #fff;
@@ -245,6 +281,18 @@ p {
   padding: 7rem 0;
 }
 
+@media screen and (max-width: 768px) {
+  #courses {
+    padding: 5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #courses {
+    padding: 4rem 0;
+  }
+}
+
 .section-header h2 {
   font-size: 35px;
   margin: 15px 0;
@@ -260,6 +308,22 @@ p {
   grid-template-columns: repeat(3 , 1fr);
   gap: 3rem;
   margin-top: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  #courses .courses-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #courses .courses-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
 }
 
 #courses .courses-container .course img {
@@ -366,7 +430,7 @@ p {
 #reviews .ratings {
   display: grid;
   grid-template-columns: repeat(3 , 1fr);
-  gap: 12rem;
+  gap: 2rem;
   margin-top: 5rem;
 }
 
@@ -410,6 +474,7 @@ p {
   margin: auto;
   text-align: center;
   color: #fff;
+  padding: 0 1rem;
 }
 
 #join-us .content h2 {
@@ -417,9 +482,14 @@ p {
   margin: 15px 0;
 }
 
-#join-us .content form {
+#join-us .content .subscribe-form {
   margin-top: 4rem;
+}
+
+#join-us .content .form-group {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 #join-us .content form input {
@@ -428,20 +498,34 @@ p {
   border-radius: 5px;
   font-size: 12px;
   width: 100%;
+  flex: 1;
 }
 
-#join-us .content form button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 12px;
+#join-us .content form .subscribe-btn {
+  padding: 12px 20px;
   background-color: var(--sky-blue);
-  height: 100%;
   cursor: pointer;
   color: #fff;
   border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 480px) {
+  #join-us .content .form-group {
+    flex-direction: column;
+  }
+
+  #join-us .content form .subscribe-btn {
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  #join-us .content form input {
+    border-radius: 5px;
+  }
 }
 
 /**** Main End ****/
@@ -500,5 +584,137 @@ p {
   font-weight: 500;
 }
 
-
 /**** Footer End ****/
+
+
+
+
+
+
+
+/* Responsive Start */
+
+/* Responsive For tablets (768px and below) */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  /* Header responsive */
+  .navbar {
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .navbar .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+  }
+
+  .navbar ul {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--dark-blue);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: var(--transition);
+    z-index: 99;
+  }
+
+  .navbar ul.active {
+    left: 0;
+  }
+
+  .navbar ul li a {
+    font-size: 18px;
+  }
+
+  .navbar .account {
+    display: none;
+  }
+
+  /* Home responsive */
+
+  /* Courses responsive */
+
+  /* Reviews responsive */
+  #reviews .ratings {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  /* Footer responsive */
+  #footer .footer-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* For mobile phones (480px and below) */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Home responsive */
+
+  /* Courses responsive */
+  .section-header h2 {
+    font-size: 28px;
+  }
+
+  /* Reviews responsive */
+  #reviews .ratings {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+  
+  #reviews {
+    padding-bottom: 4rem;
+  }
+
+  /* Join Us responsive */
+  #join-us .content h2 {
+    font-size: 28px;
+  }
+
+  /* Footer responsive */
+  #footer .footer-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  #footer .footer-row .social {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+/* Responsive For small mobile phones (320px and below) */
+@media screen and (max-width: 320px) {
+  #home .home-header h1 {
+    font-size: 24px;
+  }
+
+  .section-header h2 {
+    font-size: 24px;
+  }
+
+  #join-us .content h2 {
+    font-size: 24px;
+  }
+}
+
+/* Responsive End */
